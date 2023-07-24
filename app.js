@@ -26,7 +26,6 @@ const payment = require("./routes/PaymentRoute");
 const category = require("./routes/CategoryRoute");
 const brand = require("./routes/BrandRoute");
 
-const promotion = require("./routes/PromotionRoute");
 const review = require("./routes/ReviewRoute");
 app.use("/api/v2", product);
 app.use("/api/v2", user);
@@ -36,7 +35,6 @@ app.use("/api/v2", brand);
 app.use("/api/v2", order);
 app.use("/api/v2", payment);
 
-app.use("/", promotion);
 app.use("/", review);
 app.use("/api/v2", category);
 
