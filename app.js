@@ -15,8 +15,10 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(fileUpload({ useTempFiles: true }));
 
 const user = require("./routes/UserRoute");
+const product = require("./routes/ProductRoute");
 
 app.use("/api/v2", user);
+app.use("/api/v2", product);
 
 app.use(ErrorHandler);
 
