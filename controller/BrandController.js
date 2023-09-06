@@ -4,6 +4,7 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const cloudinary = require("cloudinary");
 const Features = require("../utils/Features");
 
+// create Brand --Admin
 exports.createBrand = catchAsyncErrors(async (req, res, next) => {
   let images = [];
 
@@ -37,6 +38,7 @@ exports.createBrand = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// Get All Brand (Admin)
 exports.getAdminBrands = catchAsyncErrors(async (req, res, next) => {
   const brands = await Brand.find();
 
@@ -46,6 +48,7 @@ exports.getAdminBrands = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// Update Brand ---Admin
 exports.updateBrand = catchAsyncErrors(async (req, res, next) => {
   let brand = await Brand.findById(req.params.id);
   if (!brand) {
@@ -61,7 +64,7 @@ exports.updateBrand = catchAsyncErrors(async (req, res, next) => {
   }
 
   if (images !== undefined) {
-   
+    // Delete image from cloudinary
     for (let i = 0; i < brand.images.length; i++) {
       await cloudinary.v2.uploader.destroy(brand.images[i].public_id);
     }
@@ -91,7 +94,7 @@ exports.updateBrand = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-
+// delete Brand
 exports.deleteBrand = catchAsyncErrors(async (req, res, next) => {
   const brand = await Brand.findById(req.params.id);
 
@@ -99,6 +102,7 @@ exports.deleteBrand = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Brand is not found with this id", 404));
   }
 
+  // Deleting images from cloudinary
   for (let i = 0; 1 < brand.images.length; i++) {
     const result = await cloudinary.v2.uploader.destroy(
       brand.images[i].public_id
@@ -113,6 +117,7 @@ exports.deleteBrand = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// single Brand details
 exports.getSingleBrand = catchAsyncErrors(async (req, res, next) => {
   const brand = await Brand.findById(req.params.id);
   if (!brand) {
@@ -124,6 +129,7 @@ exports.getSingleBrand = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// get All Brands
 exports.getAllBrands = catchAsyncErrors(async (req, res) => {
   const resultPerPage = 8;
 

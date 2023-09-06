@@ -2,6 +2,7 @@ const Wishlist = require("../models/WishListModel");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ErrorHandler = require("../utils/ErrorHandler");
 
+// Add to wishlist
 exports.addToWishlist = catchAsyncErrors(async (req, res, next) => {
   const { productName, productImage, productPrice, userId, productId } =
     req.body;
@@ -19,6 +20,7 @@ exports.addToWishlist = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// get wishlist Data
 exports.getWishlistData = catchAsyncErrors(async (req, res, next) => {
   const wishlistData = await Wishlist.find({ userId: "uid1" }); //req.user.id
 
@@ -28,6 +30,7 @@ exports.getWishlistData = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// remove wishlistData
 exports.removeWishlistData = catchAsyncErrors(async (req, res, next) => {
   const wishlistData = await Wishlist.findById(req.params.id);
 

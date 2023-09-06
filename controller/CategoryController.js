@@ -4,6 +4,7 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const cloudinary = require("cloudinary");
 const Features = require("../utils/Features");
 
+// create Category --Admin
 exports.createCategory = catchAsyncErrors(async (req, res, next) => {
   let images = [];
 
@@ -37,6 +38,7 @@ exports.createCategory = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// Get All Category (Admin)
 exports.getAdminCategories = catchAsyncErrors(async (req, res, next) => {
   const categories = await Category.find();
 
@@ -46,6 +48,7 @@ exports.getAdminCategories = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// Update Category ---Admin
 exports.updateCategory = catchAsyncErrors(async (req, res, next) => {
   let category = await Category.findById(req.params.id);
   if (!category) {
@@ -61,6 +64,7 @@ exports.updateCategory = catchAsyncErrors(async (req, res, next) => {
   }
 
   if (images !== undefined) {
+    // Delete image from cloudinary
     for (let i = 0; i < category.images.length; i++) {
       await cloudinary.v2.uploader.destroy(category.images[i].public_id);
     }
@@ -90,6 +94,7 @@ exports.updateCategory = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// delete Category
 exports.deleteCategory = catchAsyncErrors(async (req, res, next) => {
   const category = await Category.findById(req.params.id);
 
@@ -97,6 +102,7 @@ exports.deleteCategory = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Category is not found with this id", 404));
   }
 
+  // Deleting images from cloudinary
   for (let i = 0; 1 < category.images.length; i++) {
     const result = await cloudinary.v2.uploader.destroy(
       category.images[i].public_id
@@ -111,6 +117,7 @@ exports.deleteCategory = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// single Category details
 exports.getSingleCategory = catchAsyncErrors(async (req, res, next) => {
   const category = await Category.findById(req.params.id);
   if (!category) {
@@ -122,6 +129,7 @@ exports.getSingleCategory = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// get All Products
 exports.getAllCategories = catchAsyncErrors(async (req, res) => {
   const resultPerPage = 8;
 

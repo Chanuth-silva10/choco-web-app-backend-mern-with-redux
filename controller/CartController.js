@@ -2,6 +2,8 @@ const Cart = require("../models/CartModel");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ErrorHandler = require("../utils/ErrorHandler");
 
+// add to cart
+
 exports.addCart = catchAsyncErrors(async (req, res) => {
   const {
     productName,
@@ -26,6 +28,7 @@ exports.addCart = catchAsyncErrors(async (req, res) => {
   res.status(200).json({ success: true, cart });
 });
 
+// update Cart
 exports.updateCart = catchAsyncErrors(async (req, res, next) => {
   const { quantity } = req.body;
   const cart = await Cart.findByIdAndUpdate(req.params.id);
@@ -39,6 +42,7 @@ exports.updateCart = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// get Cart Data
 exports.getCartData = catchAsyncErrors(async (req, res, next) => {
   const cartData = await Cart.find({ userId: "uid1" }); //req.user.id
   res.status(200).json({
@@ -47,6 +51,7 @@ exports.getCartData = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// remove Cart Data
 exports.removeCartData = catchAsyncErrors(async (req, res, next) => {
   const cartData = await Cart.findById(req.params.id);
 
