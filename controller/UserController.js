@@ -276,8 +276,11 @@ exports.updateUserRole = catchAsyncErrors(async(req,res,next) =>{
 
 // Delete User ---Admin
 exports.deleteUser = catchAsyncErrors(async(req,res,next) =>{
+
   
    const user = await User.findById(req.params.id);
+
+   console.log(user);
 
    const imageId = user.avatar.public_id;
 
@@ -287,7 +290,7 @@ exports.deleteUser = catchAsyncErrors(async(req,res,next) =>{
         return next(new ErrorHandler("User is not found with this id",400));
     }
 
-    await user.remove();
+    await user.deleteOne();
 
     res.status(200).json({
         success: true,

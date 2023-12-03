@@ -38,7 +38,7 @@ exports.removeWishlistData = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("No wishlistData found with this id", 404));
   }
 
-  await wishlistData.remove();
+  await wishlistData.deleteOne();
 
   res.status(200).json({
     success: true,

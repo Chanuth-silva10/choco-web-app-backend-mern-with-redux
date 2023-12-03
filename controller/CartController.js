@@ -59,7 +59,7 @@ exports.removeCartData = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Items is not found with this id", 404));
   }
 
-  await cartData.remove();
+  await cartData.deleteOne();
 
   res.status(200).json({
     success: true,

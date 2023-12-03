@@ -109,7 +109,7 @@ exports.deleteBrand = catchAsyncErrors(async (req, res, next) => {
     );
   }
 
-  await brand.remove();
+  await brand.deleteOne();
 
   res.status(200).json({
     success: true,

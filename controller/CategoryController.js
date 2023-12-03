@@ -109,7 +109,7 @@ exports.deleteCategory = catchAsyncErrors(async (req, res, next) => {
     );
   }
 
-  await category.remove();
+  await category.delete();
 
   res.status(200).json({
     success: true,
