@@ -13,7 +13,6 @@ To develop it yourself from scratch, follow CLI steps below, and copy the code f
 <summary><span style="font-size:x-large">Backend Setup</span></summary>
 
 ```bash
-cd backend
 npm install 
 npm run dev `or`  npm start 
 ```
