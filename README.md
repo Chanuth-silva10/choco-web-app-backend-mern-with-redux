@@ -18,7 +18,13 @@ npm install
 npm run dev `or`  npm start 
 ```
 
+
 </details>
+
+## Choco web app backend api collection
+![image](https://github.com/Chanuth-silva10/choco-web-app-backend-mern-with-redux/assets/80547770/f4713185-8211-405f-bd59-f02ebeb1891b)
+
+Click here `Go To API Collection`, set up [POSTMAN API COLLECTION](https://www.postman.com/lively-rocket-514967/workspace/public-api-collection/collection/24118288-c19af9c2-961c-4aca-9e6b-3d93340b8a19?action=share&creator=24118288), and then follow these CLI steps:
 
 
 
