@@ -30,6 +30,30 @@ This repository contains the backend implementation for the Choco Web App, built
    ```bash
    git clone https://github.com/Chanuth-silva10/choco-web-app-backend-mern-with-redux.git
 
+2. Navigate to the project directory:
+   ```bash
+   cd choco-web-app-backend-mern-with-redux
+
+3. Install dependencies:
+   ```bash
+   npm install
+
+4. Create a .env file in the root directory and add your environment variables:
+   ```bash
+   MONGO_URI=your_mongo_uri
+   JWT_SECRET=your_jwt_secret
+
+5. Start the development server:
+   ```bash
+   npm run dev
+
+7. Build the Docker image:
+   ```bash
+   docker build -t choco-web-app-backend .
+
+8. Run the Docker container:
+   ```bash
+   docker run -d -p 5000:5000 --name choco-web-app-backend choco-web-app-backend
 
 ## Choco web app backend api collection
 ![image](https://github.com/Chanuth-silva10/choco-web-app-backend-mern-with-redux/assets/80547770/f4713185-8211-405f-bd59-f02ebeb1891b)
